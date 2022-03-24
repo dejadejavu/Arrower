@@ -141,12 +141,11 @@ while running:
                 
         playerX += playerX_change
         playerY += playerY_change
+        player(playerX, playerY)
+        pygame.display.update()
 
         #playerObj = Player(0, 0, 0, 1, 1)
         #playerObj.changeCoins(100)
-
-        player(playerX, playerY)
-        pygame.display.update()
 
 ##    goTo = input("Shop, Character, Runes, PvP, or Play? ")
 ##    if goTo == "shop": 
