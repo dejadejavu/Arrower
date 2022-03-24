@@ -92,19 +92,19 @@ while running:
 # if keystroke is pressed check whether it's right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -5
+                playerX_change = -10
                 print(f"X: {playerX} Y: {playerY}")
                 
             if event.key == pygame.K_RIGHT:
-                playerX_change = 5
+                playerX_change = 10
                 print(f"X: {playerX} Y: {playerY}")
 
             if event.key == pygame.K_DOWN:
-                playerY_change = 5
+                playerY_change = 10
                 print(f"X: {playerX} Y: {playerY}")
 
             if event.key == pygame.K_UP:
-                playerY_change = -5
+                playerY_change = -10
                 print(f"X: {playerX} Y: {playerY}")
 
             if event.key == pygame.K_r: #kill command
@@ -133,14 +133,14 @@ while running:
                 if event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
                     playerX_change = 0
 
-    ##         if event.type == pygame.KEYUP:           
-    ##            if event.type == pygame.K_UP or event.type == pygame.K_DOWN or event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
-    ##                playerY_change = 0
-    ##                playerX_change = 0
+                if event.type == pygame.KEYUP:           
+                    if event.type == pygame.K_UP or event.type == pygame.K_DOWN or event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
+                       playerY_change = 0
+                       playerX_change = 0
                     
                 
-        playerX += playerX_change
-        playerY += playerY_change
+            playerX += playerX_change
+            playerY += playerY_change
         player(playerX, playerY)
         pygame.display.update()
 
