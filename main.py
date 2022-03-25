@@ -128,7 +128,7 @@ while running:
 
                 if event.type == pygame.KEYUP:           
                     if event.type == pygame.K_UP or event.type == pygame.K_DOWN or event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
-                       playerY_change = 100
+                       playerY_change = 0
                        playerX_change = 0
                     
                 
