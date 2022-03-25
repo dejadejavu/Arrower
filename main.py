@@ -95,19 +95,19 @@ while running:
                 playerX_change = -10
                 print(f"X: {playerX} Y: {playerY}")
                 
-            if event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT:
                 playerX_change = 10
                 print(f"X: {playerX} Y: {playerY}")
 
-            if event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN:
                 playerY_change = 10
                 print(f"X: {playerX} Y: {playerY}")
 
-            if event.key == pygame.K_UP:
+            elif event.key == pygame.K_UP:
                 playerY_change = -10
                 print(f"X: {playerX} Y: {playerY}")
 
-            if event.key == pygame.K_r: #kill command
+            elif event.key == pygame.K_r: #kill command
                 running = False
                 
                 if playerX > 700:
@@ -126,21 +126,15 @@ while running:
                     #playerY = 100
                     #playerY -= 5
 
-            if event.type == pygame.KEYUP:
-                if event.type == pygame.K_UP or event.type == pygame.K_DOWN:
-                    playerY_change = 0
-
-                if event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
-                    playerX_change = 0
-
                 if event.type == pygame.KEYUP:           
                     if event.type == pygame.K_UP or event.type == pygame.K_DOWN or event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
-                       playerY_change = 0
+                       playerY_change = 100
                        playerX_change = 0
                     
                 
             playerX += playerX_change
             playerY += playerY_change
+            
         player(playerX, playerY)
         pygame.display.update()
 
