@@ -94,18 +94,22 @@ while running:
             if event.key == pygame.K_LEFT:
                 playerX_change = -10
                 print(f"X: {playerX} Y: {playerY}")
+                print("left")
                 
             elif event.key == pygame.K_RIGHT:
                 playerX_change = 10
                 print(f"X: {playerX} Y: {playerY}")
+                print("right")
 
             elif event.key == pygame.K_DOWN:
                 playerY_change = 10
                 print(f"X: {playerX} Y: {playerY}")
+                print("down")
 
             elif event.key == pygame.K_UP:
                 playerY_change = -10
                 print(f"X: {playerX} Y: {playerY}")
+                print("up")
 
             elif event.key == pygame.K_r: #kill command
                 running = False
