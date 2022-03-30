@@ -2,15 +2,22 @@
 import pygame
 pygame.init()
 #Player setup
+playerImg = pygame.image.load("archer.png")
+playerImg= pygame.transform.smoothscale(playerImg, (100, 100))
 playerX = 370
 playerY = 480
 playerX_change = 0
 playerY_change = 0
 itemsList = ["basic sword", "basic chestplate"]
 inventory = []
-#Asset loading & scaling
-playerImg = pygame.image.load("archer.png")
-playerImg= pygame.transform.smoothscale(playerImg, (100, 100))
+#Bullet setup
+#bulletImg = pygame.image.load("arrow.png")
+#bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
+#bulletX = 0
+#bulletY = 480
+#bulletX_change = 0
+#bulletY_change = 10
+#bullet_state = "ready" #ready - can't see on screen, fire - currently moving
 
 class Player:
     def __init__(self, character="swordsman", coins=0,HP=100, mainXP=0, ingameXP=0, attackStrength=1, projectileType=1):
@@ -74,6 +81,11 @@ def Character():
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
+
+#def fire_bullet(x,y):
+    #global bullet_state
+    #bullet_state = "fire"
+    #screen.blit(bulletImg, (x + 16, y + 10))
                         
 
         
@@ -96,22 +108,26 @@ while running:
                 print(f"X: {playerX} Y: {playerY}")
                 print("left")
                 
-            elif event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT:
                 playerX_change = 10
                 print(f"X: {playerX} Y: {playerY}")
                 print("right")
 
-            elif event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN:
                 playerY_change = 10
                 print(f"X: {playerX} Y: {playerY}")
                 print("down")
 
-            elif event.key == pygame.K_UP:
+            if event.key == pygame.K_UP:
                 playerY_change = -10
                 print(f"X: {playerX} Y: {playerY}")
                 print("up")
 
-            elif event.key == pygame.K_r: #kill command
+            if event.key == pygame.K_SPACE:
+                fire_bullet(playerX, bulletY)
+                print("bullet fired")
+
+            if event.key == pygame.K_r: #kill command
                 running = False
                 
                 if playerX > 700:
@@ -134,7 +150,10 @@ while running:
                     if event.type == pygame.K_UP or event.type == pygame.K_DOWN or event.type == pygame.K_LEFT or event.type == pygame. K_RIGHT:
                        playerY_change = 0
                        playerX_change = 0
-                    
+
+                #if bulllet_state is "fire":
+                    #fire_bullet(playerX,bulletY)
+                    #bulleyY -= bulletY_change
                 
             playerX += playerX_change
             playerY += playerY_change
@@ -144,29 +163,5 @@ while running:
 
         #playerObj = Player(0, 0, 0, 1, 1)
         #playerObj.changeCoins(100)
-
-##    goTo = input("Shop, Character, Runes, PvP, or Play? ")
-##    if goTo == "shop": 
-##        Shop()
-##    elif goTo == "character":
-##        print("This feature is still being worked on, check back later!")
-##    elif goTo == "runes":
-##        print("This feature is still being worked on, check back later!")
-##    elif goTo == "pvp":
-##        print("This feature is still being worked on, check back later!")
-##    elif goTo == "play":
-##        print("This feature is still being worked on, check back later!")
-
-    ##Game loop - maybe use a class?##
-
-    ##print("Starting game...")
-    ##time.sleep(0.5)
-    ##if monsterObj1.monsterType == 1:
-    ##    print("A zombie appeared!")
-    ##    print(f"You attack the zombie with your sword! It does {str(playerObj.attackStrength)} damage!")
-    ##    monsterObj1.changeHP(-1)
-    ##    print(monsterObj1.monsterHP)
-    ##    if monsterObj1.monsterHP <= 0:
-    ##        print("You killed the zombie!")
 
 pygame.quit()
