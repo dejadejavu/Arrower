@@ -11,8 +11,6 @@ playerY_change = 0
 itemsList = ["basic sword", "basic chestplate"]
 inventory = []
 #background
-bg = pygame.image.load("bg.jpg")
-screen.blit(bg, (0,0))
 #Bullet setup
 #bulletImg = pygame.image.load("arrow.png")
 #bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
@@ -85,7 +83,6 @@ def Character():
 def player(x,y):
     screen.blit(playerImg, (x, y))
 
-
 #def fire_bullet(x,y):
     #global bullet_state
     #bullet_state = "fire"
@@ -100,6 +97,9 @@ while running:
     icon = pygame.image.load("bow-and-arrow.png")
     pygame.display.set_icon(icon)
     screen.fill((255,255,255))
+    bg = pygame.image.load("bg.jpg")
+    bg= pygame.transform.smoothscale(bg, (1000, 1000))
+    screen.blit(bg, (0,-10))
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
