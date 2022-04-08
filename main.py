@@ -10,15 +10,14 @@ playerX_change = 0
 playerY_change = 0
 itemsList = ["basic sword", "basic chestplate"]
 inventory = []
-#background
 #Bullet setup
-#bulletImg = pygame.image.load("arrow.png")
-#bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
-#bulletX = 0
-#bulletY = 480
-#bulletX_change = 0
-#bulletY_change = 10
-#bullet_state = "ready" #ready - can't see on screen, fire - currently moving
+bulletImg = pygame.image.load("arrow.png")
+bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 10
+bullet_state = "ready" #ready - can't see on screen, fire - currently moving
 
 class Player:
     def __init__(self, character="swordsman", coins=0,HP=100, mainXP=0, ingameXP=0, attackStrength=1, projectileType=1):
@@ -86,8 +85,11 @@ def player(x,y):
 #def fire_bullet(x,y):
     #global bullet_state
     #bullet_state = "fire"
-    #screen.blit(bulletImg, (x + 16, y + 10))
-                        
+    #x += 10
+    #y += 10
+    #screen.blit(bulletImg, (x, y))
+    #x += 10
+    #y += 10
 
         
 running = True
@@ -127,9 +129,9 @@ while running:
                 print(f"X: {playerX} Y: {playerY}")
                 print("up")
 
-            if event.key == pygame.K_SPACE:
-                fire_bullet(playerX, bulletY)
-                print("bullet fired")
+            #if event.key == pygame.K_SPACE:
+                #fire_bullet(playerX, bulletY)
+                #print("bullet fired")
 
             if event.key == pygame.K_r: #kill command
                 running = False
