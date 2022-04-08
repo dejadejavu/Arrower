@@ -1,5 +1,6 @@
 #General setup
 import pygame
+import random
 pygame.init()
 
 #Player setup
@@ -24,8 +25,8 @@ inventory = []
 #Monster setup
 monsterImg = pygame.image.load("ghost.png")
 monsterImg= pygame.transform.smoothscale(monsterImg, (100, 100))
-monsterX = 370
-monsterY = 480
+monsterX = 0
+monsterY = 0
 monsterX_change = 0
 monsterY_change = 0
 
@@ -97,15 +98,17 @@ def player(x,y):
 
         
 running = True
+screen = pygame.display.set_mode((800,600))
+pygame.display.set_caption("Arrower")
+icon = pygame.image.load("bow-and-arrow.png")
+pygame.display.set_icon(icon)
+screen.fill((255,255,255))
+bg = pygame.image.load("bg.jpg")
+bg= pygame.transform.smoothscale(bg, (1000, 1000))
+screen.blit(bg, (0,-10))
+screen.blit(monsterImg, (random.randint(0, 700), random.randint(100,390)))
+
 while running:
-    screen = pygame.display.set_mode((800,600))
-    pygame.display.set_caption("Arrower")
-    icon = pygame.image.load("bow-and-arrow.png")
-    pygame.display.set_icon(icon)
-    screen.fill((255,255,255))
-    bg = pygame.image.load("bg.jpg")
-    bg= pygame.transform.smoothscale(bg, (1000, 1000))
-    screen.blit(bg, (0,-10))
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
