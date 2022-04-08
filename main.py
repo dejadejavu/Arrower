@@ -21,13 +21,13 @@ inventory = []
 #bulletY_change = 10
 #bullet_state = "ready" #ready - can't see on screen, fire - currently moving
 
-#Enemy setup
-enemyImg = pygame.image.load("ghost.png")
-enemyImg= pygame.transform.smoothscale(enemyImg, (100, 100))
-enemyX = 370
-enemyY = 480
-enemyX_change = 0
-enemyY_change = 0
+#Monster setup
+monsterImg = pygame.image.load("ghost.png")
+monsterImg= pygame.transform.smoothscale(monsterImg, (100, 100))
+monsterX = 370
+monsterY = 480
+monsterX_change = 0
+monsterY_change = 0
 
 class Player:
     def __init__(self, character="swordsman", coins=0,HP=100, mainXP=0, ingameXP=0, attackStrength=1, projectileType=1):
