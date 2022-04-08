@@ -1,6 +1,7 @@
 #General setup
 import pygame
 pygame.init()
+
 #Player setup
 playerImg = pygame.image.load("archer.png")
 playerImg= pygame.transform.smoothscale(playerImg, (100, 100))
@@ -10,6 +11,7 @@ playerX_change = 0
 playerY_change = 0
 itemsList = ["basic sword", "basic chestplate"]
 inventory = []
+
 #Bullet setup
 #bulletImg = pygame.image.load("arrow.png")
 #bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
@@ -18,6 +20,14 @@ inventory = []
 #bulletX_change = 0
 #bulletY_change = 10
 #bullet_state = "ready" #ready - can't see on screen, fire - currently moving
+
+#Enemy setup
+enemyImg = pygame.image.load("ghost.png")
+enemyImg= pygame.transform.smoothscale(enemyImg, (100, 100))
+enemyX = 370
+enemyY = 480
+enemyX_change = 0
+enemyY_change = 0
 
 class Player:
     def __init__(self, character="swordsman", coins=0,HP=100, mainXP=0, ingameXP=0, attackStrength=1, projectileType=1):
@@ -72,12 +82,6 @@ def Shop():
             print("You don't have enough coins!")
     elif userInput.lower == "'exit'" or "exit":
         print("Thank you, come again soon!")
-
-def Character():
-    print("You're currently playing as a swordsman.")
-    for i in range(0, len(inventory)):             
-        print(f"You're wearing {inventory[i]}")
-        i + 1
 
 def player(x,y):
     screen.blit(playerImg, (x, y))
