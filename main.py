@@ -11,13 +11,13 @@ playerY_change = 0
 itemsList = ["basic sword", "basic chestplate"]
 inventory = []
 #Bullet setup
-bulletImg = pygame.image.load("arrow.png")
-bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
-bulletX = 0
-bulletY = 480
-bulletX_change = 0
-bulletY_change = 10
-bullet_state = "ready" #ready - can't see on screen, fire - currently moving
+#bulletImg = pygame.image.load("arrow.png")
+#bulletImg= pygame.transform.smoothscale(bulletImg, (100, 100))
+#bulletX = 0
+#bulletY = 480
+#bulletX_change = 0
+#bulletY_change = 10
+#bullet_state = "ready" #ready - can't see on screen, fire - currently moving
 
 class Player:
     def __init__(self, character="swordsman", coins=0,HP=100, mainXP=0, ingameXP=0, attackStrength=1, projectileType=1):
