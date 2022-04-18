@@ -43,7 +43,7 @@ class Player:
     def changeCoins(self, amount):
         self.coins += amount
     def gainMainXP(self, amount):
-        self.ingameXP += amount
+        self.mainXP += amount
     def gainIngameXP(self, amount):
         self.ingameXP += amount
     def changeAttackStrength(self, amount):
