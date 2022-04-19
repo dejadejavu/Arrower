@@ -52,15 +52,15 @@ class Player:
         self.ProjectileType = newType
 
 class Monster:
-    def __init__(self, monsterType=1, monsterHP=1, monsterAttack=0, projectileType=1):
+    def __init__(self, monsterType=1, monsterHP=1, monsterAttack=0, monsterprojectileType=1):
         self.monsterType = monsterType #various ones with variable attack speeds
         self.monsterHP = monsterHP
         self.monsterAttack = monsterAttack
-        self.projectileType = projectileType
+        self.mnonsterprojectileType = monsterprojectileType
     def changeAttack(self, amount):
         self.monsterAttack += amount
     def changeProjectileType(self, newType):
-        self.projectileType = newType
+        self.monsterprojectileType = newType
     def changeHP(self, amount):
         self.monsterHP += amount
 
