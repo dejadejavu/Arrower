@@ -56,7 +56,7 @@ class Monster:
         self.monsterType = monsterType #various ones with variable attack speeds
         self.monsterHP = monsterHP
         self.monsterAttack = monsterAttack
-        self.mnonsterprojectileType = monsterprojectileType
+        self.monsterprojectileType = monsterprojectileType
     def changeAttack(self, amount):
         self.monsterAttack += amount
     def changeProjectileType(self, newType):
