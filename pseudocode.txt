@@ -1,0 +1,181 @@
+#General setup
+import module pygame
+import module random
+instantiate module pygame
+
+#Player setup
+var “playerImg” = load image archer.png into pygame 
+var “playerImg” = scaled image playerImg with pygame to 100, 100
+var “playerX” = 370
+var “playerY” = 480
+var “playerX_change” = 0
+var “playerY_change” = 0
+list “itemslist” = basic sword, basic chestplate
+list “inventory”
+
+#Bullet setup
+#var “bulletImg” = load image arrow.png into pygame
+#var “bulletImg” = scaled image bulletImg with pygame to 100, 100
+#var “bulletX” = 0
+#var “bulletY“= 0
+#var “bulletX_change” = 0
+#var “bulletY_change” = 0
+#var “bullet_state” = ready #ready - can't see on screen, fire - currently moving
+
+#Monster setup
+var “monsterImg” = load image ghost.png into pygame
+var “monsterImg” = scaled image monsterImg with pygame to 100, 100
+var “monsterX” = 0
+var “monsterY” = 0
+var “monsterX_change” = 0
+var “monsterY_change” = 0
+
+define class “Player” 
+define function __init__ (class, “character” = swordsman, “coins” = 0, “HP” = 100, “mainXP” = 0, “ingameXP “= 0, “attackStrength” = 1, “projectileType” = 1)
+class var “coins” = var “coins” #primary currency
+class var “character “= var “character” #multiple different ones with unique buffs
+class var “HP” = var “HP” #health points
+class var “ingameXP” = var “ingameXP” #experience points
+class var “attackStrength” = var “attackStrength” #how much damage an attack does
+class var “projectileType” = var projectileType #projectile types vary in speed and path
+define “changeCharacter” (class, “difCharacter”)
+	class var “character” = parameter “difCharacter”
+define function changeCoins (class, “amount”)
+	class var “coins” + parameter “amount”
+define function function ainMainXP (class, “amount”)
+	class var “mainXP” + parameter “amount”
+define function gainIngameXP (class, amount)
+	class var “ingameXP” + parameter “amount”
+define function changeAttackStrength (class, “amount)”
+	class var “attackStrength” + parameter “amount”
+define function changeProjectileType (class, “newType)”
+	class var “projectileType” = parameter “newType”
+
+“Monster” class
+define function __init__ (class, “monsterType” = 1, “monsterHP” = 1, “monsterAttack” = 0 “monsterProjectileType” = 1)
+	class var “monsterType” = var “monsterType”
+	class var “monsterHP” = var “monsterHP”
+	class var “monsterAttack” = var “monsterAttack” 
+	class var “monsterProjectileType” = var “monsterProjectileType”
+define function changeAttack (class, “amount”)
+	class var “monsterAttack” + parameter “amount”
+define function changeProjectileType (class, newType)
+	class var “monsterProjectileType” = parameter “newType”
+define function changeHP (class, amount)
+	class var “HP” + parameter “newType”
+
+define function Shop
+	output “Welcome to the shop!”
+	output f-string “You have {PlayerObj.coins} coins.”
+	output “The items available in the shop today are:”
+	if length of list “itemsList” less than 2 then
+		print f-string “A {itemsList [0]}.”
+	else then
+		output f-string “A {itemsList [0]} and a {itemsList [1]}
+var “userInput” = user input message “Type the name of what you want to buy. If you don't want to buy anything, type 'exit'. "
+if “userInput” is in list “itemsList” then
+	var “itemBought” = var “userInput”
+		class.changeCoins(100)
+		output f-string “You bought a {itemBought}!” 
+		add value of “itemBought” to end of list “inventory”
+	else then
+		output “You don’t have enough coins!”
+	else if var userInput = “’’exit’” or “exit” then
+		output “Thank you, come again soon!”
+
+define function player (x, y)
+	show “playerImg” at (x, y) on “screen”
+	
+
+#define function fire_bullet (x, y)
+	#global var “bullet_state”
+	var “bullet_state” = fire
+	var x + 10
+	var y + 10
+	show “bulletImg” at (x, y) on “screen”
+var x + 10
+	var y + 10
+
+var “running” = True
+set “screen size” to (800, 600)
+set window name to “Arrower”
+var “icon” = load image “bow-and-arrow.png” into pygame
+set window icon to “icon”
+set “screen” colour to (255, 255, 255)
+var “bg” = load image “bg.jpg” into pygame
+bg = scale image “bg” to size (1000, 1000)
+show “bg” at (0, -10) on “screen”
+show “monsterImg” at (random number between (0,700), (random number between (100, 390) on “screen”
+
+while var “running” = True then
+
+	for every “event” in “pygame events” then
+		if event type == pygame QUIT then
+			var “running” = False
+
+	#if keystroke is pressed check whether it’s right or left
+	if event key == pygame key down then
+		if event type == pygame key left then
+			var “playerX_change” = -10
+			output f-string “X: {playerX} Y: {PlayerY}”
+			output “left”
+
+		if event key == pygame key right then
+			var “playerX_change” = 10
+			output f-string “X: {playerX} Y: {playerY}”
+			output “right”
+		
+		if event key == pygame key down then
+			var “playerY_change” = 10
+			output f-string “X: {playerX} Y: {playerY}”
+			output “down”
+
+		if event key == pygame key up then
+			var “playerY_change” = -10
+			output f-string “X: {playerX} Y: {playerY}”
+			output “up”
+		
+		#if event key == pygame key space then
+			function fire_bullet (playerX, bulletY)
+			output “bullet fired”
+
+		if event key == pygame key r then #kill command
+			var “running” = False
+
+		if var playerX > 700 then
+			var playerX = 700
+			var playerX – 5
+	
+		
+
+else if var playerX < 0 then
+		var playerX = 0
+		var playerX – 5
+		
+	else if var playerY > 390 then
+		var playerY = 390
+		var playerY – 5
+
+	else if var playerY < 100 then
+		var playerY = 100
+		var playerY – 5
+
+	if event type == pygame key up then
+if event type == pygame key up or event type == pygame key down or event type == pygame key left or event type == pygame key right then
+	playerY_change = 0
+	playerX_change = 0
+		
+		#if var bullet_state is “fire” then
+			#function fire_bullet (playerX, bulletY)
+			#var bulletY – var bulletY_change
+		
+		  var playerX + var playerX_change
+           		  var  playerY + var playerY_change
+		
+function player (playerX, player)
+update pygame display 
+
+  instance playerObj = instance of class “Player” (0, 0, 0, 1, 1)
+	instance playerObj method changeCoins (100)
+  
+quit pygame
